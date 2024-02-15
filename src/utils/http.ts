@@ -59,9 +59,17 @@ function parseCountriesData(countries: HttpCountriesType[]): CountriesType[] {
   });
 }
 
-export async function getListOfCountries() {
+export async function getListOfCountries(region: string) {
+  console.log(region);
+
+  let option = 'all';
+
+  if (region) {
+    option = `region/${region}`;
+  }
+
   const response = await fetch(
-    `${BASE_URL}/all?fields=name,flags,population,capital,region`,
+    `${BASE_URL}/${option}?fields=name,flags,population,capital,region`,
   );
 
   if (!response.ok) {
