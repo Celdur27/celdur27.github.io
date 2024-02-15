@@ -1,14 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UIContext } from '../store/ui-context';
+import { UIContext } from '../../store/ui-context';
 
 import classes from './Header.module.scss';
 
-type HeaderProps = {
-  className?: string;
-};
-
-export default function Header({ className }: HeaderProps): JSX.Element {
+export default function Header(): JSX.Element {
   const uiCtx = useContext(UIContext);
 
   const handleClick = () => {
@@ -16,7 +12,9 @@ export default function Header({ className }: HeaderProps): JSX.Element {
   };
 
   return (
-    <header className={`${classes.header} ${className}`}>
+    <header
+      className={`${classes.header} ${uiCtx.isLightTheme ? classes['header--light'] : classes['header--dark']}`}
+    >
       <div className={classes['header-content']}>
         <Link to="/" className={classes['header-title']}>
           Where in the world?

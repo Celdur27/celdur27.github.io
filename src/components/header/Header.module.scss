@@ -1,6 +1,10 @@
+@import '../../styles/variables.scss';
+
 .header {
   height: 80px;
   box-shadow: 0px 0px 5px #000;
+  position: relative;
+  z-index: 1;
 
   &-content {
     height: 100%;
@@ -32,6 +36,16 @@
     &-text {
       margin-left: 10px;
     }
+  }
+
+  &--light {
+    background-color: $light-mode-element;
+    color: $light-mode-text;
+  }
+
+  &--dark {
+    background-color: $dark-mode-element;
+    color: $dark-mode-text;
   }
 
   @media (min-width: 376px) {
