@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import Header from '../components/Header';
+import Header from '../components/header/Header';
 import { Outlet } from 'react-router';
 import { UIContext } from '../store/ui-context';
 
@@ -9,7 +9,7 @@ export default function RootLayout(): JSX.Element {
 
   return (
     <>
-      <Header className={uiCtx.isLightTheme ? 'light' : 'dark'} />
+      <Header />
       <main className={uiCtx.isLightTheme ? 'light' : 'dark'}>
         <Outlet />
       </main>

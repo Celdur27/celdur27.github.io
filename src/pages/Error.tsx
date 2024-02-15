@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from '../components/Header';
+import Header from '../components/header/Header';
 
 import classes from './Error.module.scss';
 
-export default function ErrorPage() {
+export default function ErrorPage(): JSX.Element {
   return (
     <>
       <Header />
