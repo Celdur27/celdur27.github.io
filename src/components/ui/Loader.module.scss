@@ -1,0 +1,29 @@
+@import '../../styles/variables.scss';
+
+.loader {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  margin: 30px auto;
+
+  &--light {
+    border: 10px solid $dark-mode-background;
+    border-bottom-color: transparent;
+  }
+
+  &--dark {
+    border: 10px solid $light-mode-background;
+    border-bottom-color: transparent;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

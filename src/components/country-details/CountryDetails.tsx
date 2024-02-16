@@ -8,12 +8,14 @@ import { UIContext } from '../../store/ui-context';
 
 import classes from './CountryDetails.module.scss';
 import { Link } from 'react-router-dom';
+import Loader from '../ui/Loader';
+import ErrorBox from '../ui/ErrorBox';
 
-export default function CountryDetails() {
+export default function CountryDetails(): JSX.Element {
   const { name } = useParams<string>();
   const uiCtx = useContext(UIContext);
 
-  const { data } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ['country', { name: name }],
     queryFn: () => getCountryDetails(name),
   });
@@ -29,6 +31,8 @@ export default function CountryDetails() {
         <i className="fa-solid fa-arrow-left"></i>
         <span>Back</span>
       </Link>
+      {isLoading && <Loader />}
+      {isError && <ErrorBox title={error.name} message={error.message} />}
       {data && (
         <div className={classes['country-details-card']}>
           <img

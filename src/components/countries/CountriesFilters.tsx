@@ -40,7 +40,7 @@ export default function CountriesFilters({
         value={region}
         onChange={(e) => onRegionChange(e.target.value)}
       >
-        <option value="" disabled selected hidden>
+        <option value="" disabled hidden>
           Filter by Region
         </option>
         <option
@@ -79,7 +79,7 @@ export default function CountriesFilters({
         value={sort}
         onChange={(e) => onSortChange(e.target.value)}
       >
-        <option value="" disabled selected hidden>
+        <option value="" disabled hidden>
           Sort by...
         </option>
         <option
