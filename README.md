@@ -23,6 +23,10 @@ When all dependecies are installed, You just have to run:
 
 Application will be available under [http://localhost:3000](http://localhost:3000) address.
 
+## How to use this project?
+
+After displaying main page application will send request to [Rest Countries](https://restcountries.com/) to get all data. As user you can click on any Country Card to display details about this country. Also You can filter by name and region, and You can sort by name, population and region. User can switch between Light and Dark mode at any time.
+
 ## Used libraries
 
 To create this project I've used this libraries:
