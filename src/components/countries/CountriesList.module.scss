@@ -2,6 +2,7 @@
 
 .countries {
   padding: 20px;
+  min-height: calc(100vh - 120px);
 
   &-content {
     display: flex;

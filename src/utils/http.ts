@@ -1,67 +1,12 @@
 import { QueryClient } from '@tanstack/query-core';
-
-import { v4 as uuidv4 } from 'uuid';
+import { parseCountriesData, parseCountryDetailsData } from './parsers';
+import { CountryDetailsType } from './types';
 
 const BASE_URL = 'https://restcountries.com/v3.1';
 
 export const queryClient = new QueryClient();
 
-type HttpCountriesType = {
-  capital: string[];
-  flags: {
-    alt: string;
-    png: string;
-    svg: string;
-  };
-  name: {
-    common: string;
-    nativeName: {
-      ell: {
-        official: string;
-        common: string;
-      };
-      tur: {
-        official: string;
-        common: string;
-      };
-      official: string;
-    };
-  };
-  population: number;
-  region: string;
-};
-
-export type CountriesType = {
-  name: string;
-  population: number;
-  region: string;
-  capital: string;
-  id: string;
-  flag: {
-    png: string;
-    alt: string;
-  };
-};
-
-function parseCountriesData(countries: HttpCountriesType[]): CountriesType[] {
-  return countries.map((country) => {
-    return {
-      id: uuidv4(),
-      name: country.name.common,
-      population: country.population,
-      region: country.region,
-      capital: country.capital[0],
-      flag: {
-        png: country.flags.png,
-        alt: country.flags.alt,
-      },
-    };
-  });
-}
-
 export async function getListOfCountries(region: string) {
-  console.log(region);
-
   let option = 'all';
 
   if (region) {
@@ -69,7 +14,7 @@ export async function getListOfCountries(region: string) {
   }
 
   const response = await fetch(
-    `${BASE_URL}/${option}?fields=name,flags,population,capital,region`,
+    `${BASE_URL}/${option}?fields=name,flags,population,capital,region,cca3`,
   );
 
   if (!response.ok) {
@@ -80,4 +25,37 @@ export async function getListOfCountries(region: string) {
   const data = parseCountriesData(await response.json());
 
   return data;
+}
+
+export async function getCountryDetails(name: string | undefined) {
+  const response = await fetch(`${BASE_URL}/name/${name}`);
+
+  if (!response.ok) {
+    const error = new Error(
+      'An error occurred while fetching country details.',
+    );
+    throw error;
+  }
+
+  const data = parseCountryDetailsData((await response.json())[0]);
+
+  const countriesList = await getListOfCountries('');
+
+  const borders = data.borderCountries.map((border) => {
+    const borderCountryName = countriesList.find(
+      (country) => country.code === border,
+    )?.name;
+
+    if (!borderCountryName) {
+      return '';
+    }
+    return borderCountryName;
+  });
+
+  const countryDetails: CountryDetailsType = {
+    ...data,
+    borderCountries: borders,
+  };
+
+  return countryDetails;
 }
