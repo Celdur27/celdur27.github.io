@@ -1,0 +1,143 @@
+@import '../../styles/variables.scss';
+
+.country-details {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 80px);
+
+  &-button {
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #7c7c7c;
+    padding: 10px 30px;
+    margin: 0 0 15px 0;
+    width: fit-content;
+    text-decoration: none;
+
+    & span {
+      margin-left: 10px;
+    }
+  }
+
+  &-button--light {
+    background-color: $light-mode-element;
+    color: $light-mode-text;
+  }
+
+  &-button--dark {
+    background-color: $dark-mode-element;
+    color: $dark-mode-text;
+    box-shadow: none;
+  }
+
+  &-image {
+    width: 100%;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  &-name {
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 30px;
+    margin: 0;
+  }
+
+  &-content-info {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &-paragraph {
+    margin: 0;
+    line-height: 32px;
+
+    & span {
+      font-weight: 800;
+    }
+  }
+
+  &-borders {
+    display: flex;
+    flex-direction: column;
+
+    & span {
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+  }
+
+  &-borders-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &-border {
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #7c7c7c;
+    padding: 5px 20px;
+    margin: 0 15px 15px 0;
+    width: fit-content;
+    text-decoration: none;
+  }
+
+  &-border--light {
+    background-color: $light-mode-element;
+    color: $light-mode-text;
+  }
+
+  &-border--dark {
+    background-color: $dark-mode-element;
+    color: $dark-mode-text;
+    box-shadow: none;
+  }
+
+  @media (min-width: $mobile-size) {
+    max-width: $desktop-size;
+    margin: 0 auto;
+    padding: 20px 30px;
+    box-sizing: border-box;
+
+    &-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    &-content-info {
+      flex-direction: row;
+      margin-bottom: 60px;
+    }
+
+    &-content-info-panel {
+      flex: 1;
+    }
+  }
+
+  @media (min-width: 900px) {
+    &-card {
+      flex-direction: row;
+    }
+
+    &-image {
+      max-width: 560px;
+      height: 100%;
+    }
+
+    &-content,
+    &-image {
+      flex-grow: 1;
+      flex-basis: 0;
+    }
+  }
+}

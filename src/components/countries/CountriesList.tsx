@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
-import { CountriesType, getListOfCountries } from '../../utils/http';
+import { getListOfCountries } from '../../utils/http';
+import { CountriesType } from '../../utils/types';
 import CountryCard from './CountryCard';
 
 import classes from './CountriesList.module.scss';

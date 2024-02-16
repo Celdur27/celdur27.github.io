@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { CountriesType } from '../../utils/http';
+import { CountriesType } from '../../utils/types';
 import { UIContext } from '../../store/ui-context';
 
 import classes from './CountryCard.module.scss';
+import { Link } from 'react-router-dom';
 
 type CountryCardProps = {
   country: CountriesType;
@@ -12,7 +13,8 @@ export default function CountryCard({ country }: CountryCardProps) {
   const uiCtx = useContext(UIContext);
 
   return (
-    <div
+    <Link
+      to={`/${country.name}`}
       className={`${classes['country-card']} ${uiCtx.isLightTheme ? classes['country-card--light'] : classes['country-card--dark']}`}
     >
       <img
@@ -35,6 +37,6 @@ export default function CountryCard({ country }: CountryCardProps) {
           {country.capital}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }

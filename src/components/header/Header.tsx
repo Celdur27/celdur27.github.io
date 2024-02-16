@@ -20,8 +20,14 @@ export default function Header(): JSX.Element {
           Where in the world?
         </Link>
         <button onClick={handleClick} className={classes['header-button']}>
-          <i className="fa-regular fa-moon"></i>
-          <span className={classes['header-button-text']}>Dark Mode</span>
+          {uiCtx.isLightTheme ? (
+            <i className="fa-regular fa-moon"></i>
+          ) : (
+            <i className="fa-regular fa-sun"></i>
+          )}
+          <span className={classes['header-button-text']}>
+            {uiCtx.isLightTheme ? 'Dark Mode' : 'Light Mode'}
+          </span>
         </button>
       </div>
     </header>

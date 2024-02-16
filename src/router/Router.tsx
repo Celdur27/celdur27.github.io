@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from '../layouts/RootLayout';
 import ErrorPage from '../pages/Error';
 import CountriesPage from '../pages/Countries';
+import CountryPage from '../pages/Country';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <CountriesPage />,
+      },
+      {
+        path: '/:name',
+        element: <CountryPage />,
       },
     ],
   },
