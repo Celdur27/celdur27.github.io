@@ -16,7 +16,7 @@ export default function CountryCard({
 
   return (
     <Link
-      to={`/${country.name}`}
+      to={`/countries-api/${country.name}`}
       className={`${classes['country-card']} ${uiCtx.isLightTheme ? classes['country-card--light'] : classes['country-card--dark']}`}
     >
       <img

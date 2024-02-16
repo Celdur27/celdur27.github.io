@@ -7,7 +7,7 @@ import CountryPage from '../pages/Country';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/countries-api',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
         element: <CountriesPage />,
       },
       {
-        path: '/:name',
+        path: '/countries-api/:name',
         element: <CountryPage />,
       },
     ],

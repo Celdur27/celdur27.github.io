@@ -25,7 +25,7 @@ export default function CountryDetails(): JSX.Element {
   return (
     <div className={classes['country-details']}>
       <Link
-        to="/"
+        to="/countries-api"
         className={`${classes['country-details-button']} ${uiCtx.isLightTheme ? classes['country-details-button--light'] : classes['country-details-button--dark']}`}
       >
         <i className="fa-solid fa-arrow-left"></i>
@@ -87,7 +87,7 @@ export default function CountryDetails(): JSX.Element {
                   {data.borderCountries.map((border) => (
                     <Link
                       key={border}
-                      to={`/${border}`}
+                      to={`/countries-api/${border}`}
                       className={`${classes['country-details-border']} ${uiCtx.isLightTheme ? classes['country-details-border--light'] : classes['country-details-border--dark']}`}
                     >
                       {border}

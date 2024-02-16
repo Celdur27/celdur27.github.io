@@ -16,7 +16,7 @@ export default function Header(): JSX.Element {
       className={`${classes.header} ${uiCtx.isLightTheme ? classes['header--light'] : classes['header--dark']}`}
     >
       <div className={classes['header-content']}>
-        <Link to="/" className={classes['header-title']}>
+        <Link to="/countries-api" className={classes['header-title']}>
           Where in the world?
         </Link>
         <button onClick={handleClick} className={classes['header-button']}>
