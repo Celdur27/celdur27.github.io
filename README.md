@@ -3,6 +3,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 This project was created as part of a task from the website [Frontend Mentor](https://www.frontendmentor.io/home).
 
+## Demo
+
+You can preview demo of this application without having to set up it on your local machine by visiting [Countries API Demo](https://celdur27.github.io/countries-api).
+
 ## How to run project?
 
 First of all you have to install all dependencies. To achive that you have to run:
