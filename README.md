@@ -31,6 +31,6 @@ After displaying main page application will send request to [Rest Countries](htt
 
 To create this project I've used this libraries:
 
-- Tanstack Query - to manage queries and http requests;
-- React Router - to add routing to this application;
-- node-sass - to use SASS preprocesor for CSS;
+- [Tanstack Query](https://tanstack.com/) - to manage queries and http requests;
+- [React Router](https://reactrouter.com/en/main) - to add routing to this application;
+- [node-sass](https://www.npmjs.com/package/node-sass) - to use SASS preprocesor for CSS;
