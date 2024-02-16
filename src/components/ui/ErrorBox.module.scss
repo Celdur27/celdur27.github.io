@@ -1,0 +1,24 @@
+.error-box {
+  border: 2px solid #b00000;
+  background-color: #ffb7b7;
+  border-radius: 20px;
+  color: #cf0101;
+  padding: 20px;
+  margin: 20px auto;
+
+  & h1 {
+    font-size: 40px;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  & p {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 900) {
+    width: 900px;
+  }
+}

@@ -8,6 +8,8 @@ import CountryCard from './CountryCard';
 
 import classes from './CountriesList.module.scss';
 import CountriesFilters from './CountriesFilters';
+import Loader from '../ui/Loader';
+import ErrorBox from '../ui/ErrorBox';
 
 export default function CountriesList(): JSX.Element {
   const [region, setRegion] = useState<string>('');
@@ -47,9 +49,6 @@ export default function CountriesList(): JSX.Element {
     );
   }
 
-  console.log(isError, error);
-  console.log(isLoading);
-
   return (
     <div className={classes.countries}>
       <CountriesFilters
@@ -60,11 +59,15 @@ export default function CountriesList(): JSX.Element {
         onSearchTextChange={handleSearchChange}
         onSortChange={handleSortByChange}
       />
-      <div className={classes['countries-content']}>
-        {countries.map((country: CountriesType) => (
-          <CountryCard key={country.id} country={country} />
-        ))}
-      </div>
+      {isLoading && <Loader />}
+      {isError && <ErrorBox title={error.name} message={error.message} />}
+      {!isLoading && !isError && (
+        <div className={classes['countries-content']}>
+          {countries.map((country: CountriesType) => (
+            <CountryCard key={country.id} country={country} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

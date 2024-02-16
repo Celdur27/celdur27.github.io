@@ -9,7 +9,9 @@ type CountryCardProps = {
   country: CountriesType;
 };
 
-export default function CountryCard({ country }: CountryCardProps) {
+export default function CountryCard({
+  country,
+}: CountryCardProps): JSX.Element {
   const uiCtx = useContext(UIContext);
 
   return (
