@@ -4,6 +4,7 @@ import { UIContext } from '../../store/ui-context';
 
 import classes from './CountryCard.module.scss';
 import { Link } from 'react-router-dom';
+import { getStyleForCurrentTheme } from '../../utils/themeHelpers';
 
 type CountryCardProps = {
   country: CountriesType;
@@ -17,7 +18,7 @@ export default function CountryCard({
   return (
     <Link
       to={`/countries-api/${country.name}`}
-      className={`${classes['country-card']} ${uiCtx.isLightTheme ? classes['country-card--light'] : classes['country-card--dark']}`}
+      className={`${classes['country-card']} ${classes[`country-card--${getStyleForCurrentTheme(uiCtx.isLightTheme)}`]}`}
     >
       <img
         className={classes['country-card-image']}

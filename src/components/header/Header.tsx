@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { UIContext } from '../../store/ui-context';
 
 import classes from './Header.module.scss';
+import { getStyleForCurrentTheme } from '../../utils/themeHelpers';
 
 export default function Header(): JSX.Element {
   const uiCtx = useContext(UIContext);
@@ -13,7 +14,7 @@ export default function Header(): JSX.Element {
 
   return (
     <header
-      className={`${classes.header} ${uiCtx.isLightTheme ? classes['header--light'] : classes['header--dark']}`}
+      className={`${classes.header} ${classes[`header--${getStyleForCurrentTheme(uiCtx.isLightTheme)}`]}`}
     >
       <div className={classes['header-content']}>
         <Link to="/countries-api" className={classes['header-title']}>

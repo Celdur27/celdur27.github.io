@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
 import { getListOfCountries } from '../../utils/http';
@@ -15,11 +15,21 @@ export default function CountriesList(): JSX.Element {
   const [region, setRegion] = useState<string>('');
   const [sortBy, setSortBy] = useState<string>('');
   const [searchCountry, setSearchCountry] = useState<string>('');
+  const [debouncedSearchCountry, setDebouncedSearchCountry] =
+    useState<string>('');
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['countries', { region: region }],
     queryFn: () => getListOfCountries(region),
   });
+
+  useEffect(() => {
+    const delayTimeout = setTimeout(() => {
+      setDebouncedSearchCountry(searchCountry);
+    }, 500);
+
+    return () => clearTimeout(delayTimeout);
+  }, [searchCountry, 500]);
 
   const handleChangeRegion = (region: string) => {
     setRegion(region);
@@ -35,7 +45,9 @@ export default function CountriesList(): JSX.Element {
 
   const countries = data
     ? data.filter((country) =>
-        country.name.toLowerCase().includes(searchCountry.toLowerCase()),
+        country.name
+          .toLowerCase()
+          .includes(debouncedSearchCountry.toLowerCase()),
       )
     : [];
 
@@ -61,6 +73,9 @@ export default function CountriesList(): JSX.Element {
       />
       {isLoading && <Loader />}
       {isError && <ErrorBox title={error.name} message={error.message} />}
+      {!isLoading && !isError && countries.length === 0 && (
+        <h3>We could not find any countries with these filters.</h3>
+      )}
       {!isLoading && !isError && (
         <div className={classes['countries-content']}>
           {countries.map((country: CountriesType) => (

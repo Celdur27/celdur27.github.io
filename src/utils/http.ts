@@ -6,7 +6,7 @@ const BASE_URL = 'https://restcountries.com/v3.1';
 
 export const queryClient = new QueryClient();
 
-export async function getListOfCountries(region: string) {
+export async function getListOfCountries(region?: string) {
   let option = 'all';
 
   if (region) {
@@ -39,7 +39,7 @@ export async function getCountryDetails(name: string | undefined) {
 
   const data = parseCountryDetailsData((await response.json())[0]);
 
-  const countriesList = await getListOfCountries('');
+  const countriesList = await getListOfCountries();
 
   const borders = data.borderCountries.map((border) => {
     const borderCountryName = countriesList.find(

@@ -10,6 +10,7 @@ import classes from './CountryDetails.module.scss';
 import { Link } from 'react-router-dom';
 import Loader from '../ui/Loader';
 import ErrorBox from '../ui/ErrorBox';
+import { getStyleForCurrentTheme } from '../../utils/themeHelpers';
 
 export default function CountryDetails(): JSX.Element {
   const { name } = useParams<string>();
@@ -26,7 +27,7 @@ export default function CountryDetails(): JSX.Element {
     <div className={classes['country-details']}>
       <Link
         to="/countries-api"
-        className={`${classes['country-details-button']} ${uiCtx.isLightTheme ? classes['country-details-button--light'] : classes['country-details-button--dark']}`}
+        className={`${classes['country-details-button']} ${classes[`country-details-button--${getStyleForCurrentTheme(uiCtx.isLightTheme)}`]}`}
       >
         <i className="fa-solid fa-arrow-left"></i>
         <span>Back</span>
@@ -88,7 +89,7 @@ export default function CountryDetails(): JSX.Element {
                     <Link
                       key={border}
                       to={`/countries-api/${border}`}
-                      className={`${classes['country-details-border']} ${uiCtx.isLightTheme ? classes['country-details-border--light'] : classes['country-details-border--dark']}`}
+                      className={`${classes['country-details-border']} ${classes[`country-details-border--${getStyleForCurrentTheme(uiCtx.isLightTheme)}`]}`}
                     >
                       {border}
                     </Link>

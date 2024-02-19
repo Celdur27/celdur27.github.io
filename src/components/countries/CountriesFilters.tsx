@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { UIContext } from '../../store/ui-context';
 
 import classes from './CountriesFilters.module.scss';
+import { getStyleForCurrentTheme } from '../../utils/themeHelpers';
 
 type CountriesFiltersProps = {
   region: string;
@@ -26,7 +27,7 @@ export default function CountriesFilters({
   return (
     <div className={classes['countries-filters']}>
       <div
-        className={`${classes['countries-filters-input']} ${uiCtx.isLightTheme ? classes['countries-filters-input--light'] : classes['countries-filters-input--dark']}`}
+        className={`${classes['countries-filters-input']} ${classes[`countries-filters-input--${getStyleForCurrentTheme(uiCtx.isLightTheme)}`]}`}
       >
         <input
           placeholder="Search for a country..."
@@ -36,7 +37,7 @@ export default function CountriesFilters({
         <i className="fa-solid fa-magnifying-glass"></i>
       </div>
       <select
-        className={`${classes['countries-filters-select']} ${uiCtx.isLightTheme ? classes['countries-filters-select--light'] : classes['countries-filters-select--dark']}`}
+        className={`${classes['countries-filters-select']} ${classes[`countries-filters-select--${getStyleForCurrentTheme(uiCtx.isLightTheme)}`]}`}
         value={region}
         onChange={(e) => onRegionChange(e.target.value)}
       >
@@ -75,7 +76,7 @@ export default function CountriesFilters({
         </option>
       </select>
       <select
-        className={`${classes['countries-filters-select']} ${uiCtx.isLightTheme ? classes['countries-filters-select--light'] : classes['countries-filters-select--dark']}`}
+        className={`${classes['countries-filters-select']} ${classes[`countries-filters-select--${getStyleForCurrentTheme(uiCtx.isLightTheme)}`]}`}
         value={sort}
         onChange={(e) => onSortChange(e.target.value)}
       >
