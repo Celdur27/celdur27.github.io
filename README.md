@@ -1,6 +1,6 @@
 # Countries API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created with [Vite](https://vitejs.dev/guide/).
 This project was created as part of a task from the website [Frontend Mentor](https://www.frontendmentor.io/home).
 
 ## Demo
